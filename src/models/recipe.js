@@ -26,7 +26,13 @@ Recipe.prototype.getData = function (recipeQuery) {
 
 Recipe.prototype.mapData = function (data) {
   const recipeAry = data.recipes
-  console.log(recipeAry);
+  return recipeAry.map((recipe)=>{
+    return {
+      'title': recipe.title,
+      'image': recipe.image_url,
+      'link': recipe.source_url
+    }
+  });
 };
 
 Recipe.prototype.processIngredients = function (ingredientsInput) {
@@ -47,16 +53,13 @@ Recipe.prototype.processSpaces = function (ingredientsAry) {
     return letters.join('');
   });
 };
+
 Recipe.prototype.bindEvent = function () {
   PubSub.subscribe('FormView:submit', (evt) =>{
     const recipeQuery = this.generateUrl(evt.detail.key_input,evt.detail.ingredients_input);
-    console.log(recipeQuery);
     this.getData(recipeQuery);
+    PubSub.publish('Recipe:data-ready');
   });
 };
-
-
-
-
 
 module.exports = Recipe;

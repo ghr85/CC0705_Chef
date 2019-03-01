@@ -1,5 +1,5 @@
 const Recipe = require('./models/recipe.js');
-// const RecipeView = require('./views/recipe_view.js');
+const ResultView = require('./views/result_view.js');
 const RecipeFormView = require('./views/recipe_form_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,7 +13,6 @@ recipe.bindEvent();
 const recipeFormView = new RecipeFormView();
 recipeFormView.bindEvent();
 
-
-// const recipeView = new RecipeView(container_element);
-// recipeView.bindEvent();
+const resultView = new ResultView(container_element);
+resultView.bindEvent();
 });
