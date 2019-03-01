@@ -12,10 +12,10 @@ RecipeFormView.prototype.bindEvent = function () {
   this.recipeFormView.addEventListener('submit',(evt) => {
     evt.preventDefault();
     const ingredientsInput = evt.target.ingredients_input.value;
-    const mealInput = evt.target.meal_input.value;
+    const keyInput = evt.target.key_input.value;
     PubSub.publish('FormView:submit',{
       'ingredients_input': ingredientsInput,
-      'meal_input': mealInput
+      'key_input': keyInput
     });
   });
 };
