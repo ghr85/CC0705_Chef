@@ -1,0 +1,16 @@
+.header{
+  display: flex;
+
+}
+
+#logo{
+  display: inline;
+  width: 200px;
+  height: auto;
+  flex-direction: row;
+}
+
+#header-txt {
+display: inline;
+flex-direction: row;
+}

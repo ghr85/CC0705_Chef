@@ -2,68 +2,44 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Gordon's Garden Gathering Gizmo</title>
+  <title>Chef.</title>
   <script src="js/bundle.js"></script>
   <link rel="stylesheet" href="css/furious_styles.css">
 </head>
 <body>
   <header>
-  <h1 class = 'title'>Gordon's Garden Gathering Gizmo</h1>
-  <h2 class = 'page-intent'>Current Plant Inventory</h2>
-  <p class = 'description'>A place to track all of your plants and their care habits in one place</p>
+    <div id='header-img'>
+    <img id='logo' src='./images/raekwon_the_chef.jpg' alt='raekwon_the_chef'></img>
+    </div>
+    <div id='header-txt'>
+  <h1 class = 'title'>Chef.</h1>
+  <h2 class = 'page-intent'>Je Suis Dans Le Merde</h2>
+  <p class = 'description'>An app to provide you with random cullinary inspiration based on what you have in the cupboard</p>
+</div>
+
 </header>
 <section class-'main'>
-  <p class = 'instruction'>Enter your plant details below and watch your collection grow</p>
+  <p class = 'instruction'>Enter your ingredients (separated by a comma) and preferred meal(e.g omlette/stew/salad) if you wish, otherwise leave blank for a random selection</p>
   <div class='garden_form'>
-    <form name = 'plant_input_form' id='plant_input_form'>
-      <div class='common-name'>
-        <label for='common_name'>Common Name:</label>
-        <input type='text' id='common_name' ></input>
+    <form name = 'recipe_form' id='recipe_form'>
+      <div class='ingredient_list '>
+        <label for='ingredients_input'>Ingredients:</label>
+        <input type='text' id='ingredients_input' ></input>
       </div>
-      <div class='latin-name'>
-        <label for='latin-name'>Latin Name:</label>
-        <input type='text' id='latin_name' ></input>
+      <div class='meal_input'>
+        <label for='meal_input'>Meal Preference:</label>
+        <input type='text' id='meal_input' ></input>
       </div>
-      <div class='sunshine'>
-        <label for='sun_select'>Sun Type:</label>
-        <select id='sun_select' class='options'>
-          <option value='fullsun'>Full Sun</option>
-          <option value='partsun'>Part Sun</option>
-          <option value='fullshade'>Full Shade</option>
-          <option value='partshade'>Part Shade</option>
-        </select>
-      </div>
-      <div class='soil-type'>
-        <div class='soil-select'>
-          <p>Soil Structure</p>
-          <label for='soilsandy'>Sandy</label>
-          <input class='options' type='checkbox' id='soilsandy' value='sandy' name='soilSelect'/>
-          <label for='soilloam'>Loam</label>
-          <input class='options' type='checkbox' id='soilloam' value='loam' name='soilSelect'>
-          <label for='soilchalk'>Chalk</label>
-          <input class='options' type='checkbox' id='soilchalk' value='chalk'name='soilSelect'>
-          <label for='soilclay'>Clay</label>
-          <input class='options' type='checkbox' id='soilclay' value='clay' name='soilSelect'>
-        </div>
-        <div class='soil-moist'>
-          <p>Soil Moisture</p>
-          <label for='moistpoor'>Poorly Drained</label>
-          <input class='options' type='radio' id='moistpoor' value='Poorly Drained' name='moistSelect'>
-          <label for='moistwell'>Well Drained</label>
-          <input class='options' type='radio' id='moistwell' value='Well Drained' name='moistSelect'>
-          <label for='moistmoist'>Moist yet drained</label>
-          <input class='options' type='radio' id='moistmoist' value='Moist but Drained' name='moistSelect'>
           <div class='button-block'>
-            <input type='submit' value='Add to Plant Tracker'/>
-            <input type='reset' value='Reset Plant Form'/>
-
+            <input type='submit' value='Cook it up!'/>
+            <input type='reset' value='Reset Input'/>
           </div>
         </div>
       </div>
     </form>
   </div>
-  <button id='delete-all'>Remove</button>
-  <div id='garden-list'>
-  </div>
+  <button id='clear-all'>Remove Items</button>
+</section>
+<section id='results'>
 </section>
 </body>
