@@ -16,7 +16,7 @@ Recipe.prototype.generateUrl = function (apiKeyInput,ingredientsInput) {
   this.url = `https://www.food2fork.com/api/search?key=${apiKeyInput}&q=${ingredients}`
 };
 
-Recipe.prototype.getData = function (recipeQuery) {
+Recipe.prototype.getData = function () {
   (new RequestHelper(this.url)).get()
   .then((data) => {
     const mapData = this.mapData(data);
@@ -56,9 +56,8 @@ Recipe.prototype.processSpaces = function (ingredientsAry) {
 
 Recipe.prototype.bindEvent = function () {
   PubSub.subscribe('FormView:submit', (evt) =>{
-    const recipeQuery = this.generateUrl(evt.detail.key_input,evt.detail.ingredients_input);
-    this.getData(recipeQuery);
-    PubSub.publish('Recipe:data-ready');
+    this.generateUrl(evt.detail.key_input,evt.detail.ingredients_input);
+    this.getData();
   });
 };
 

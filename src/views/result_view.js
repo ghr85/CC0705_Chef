@@ -4,8 +4,10 @@
 // Result View
 
 const PubSub = require('../helpers/pub_sub.js')
-const ResultView = function(){
-  this.container = container;
+const RecipeView = require('./recipe_view.js')
+
+const ResultView = function(container_element){
+  this.container = container_element;
 };
 
 ResultView.prototype.bindEvent = function () {
@@ -16,9 +18,10 @@ ResultView.prototype.bindEvent = function () {
 };
 
 ResultView.prototype.render = function (recipeAry) {
+  console.log(recipeAry);
   recipeAry.forEach((recipe)=>{
-    const recipe = new RecipeView(recipe)
-    this.container.appendChild(recipe)
+    const recipeView = new RecipeView(this.container,recipe)
+    recipeView.render()
   })
 
 };
