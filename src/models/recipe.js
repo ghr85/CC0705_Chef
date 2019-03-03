@@ -9,11 +9,16 @@ const RequestHelper = require('../helpers/request_helper.js')
 const Recipe = function(){
   this.recipeAry = [];
   this.url = null ;
+  this.currentQuery = null;
+  this.currentApi = null;
+  this.page_int = 1;
 };
 
 Recipe.prototype.generateUrl = function (apiKeyInput,ingredientsInput) {
   const ingredients = this.processIngredients(ingredientsInput);
-  this.url = `https://www.food2fork.com/api/search?key=${apiKeyInput}&q=${ingredients}`
+  this.currentQuery = ingredients;
+  this.currentApi = apiKeyInput;
+  this.url = `https://www.food2fork.com/api/search?key=${apiKeyInput}&q=${ingredients}&page=${this.page_int}`
 };
 
 Recipe.prototype.getData = function () {
@@ -25,7 +30,8 @@ Recipe.prototype.getData = function () {
 };
 
 Recipe.prototype.mapData = function (data) {
-  const recipeAry = data.recipes
+  const recipeAry = data.recipes;
+  this.paginate(recipeAry);
   return recipeAry.map((recipe)=>{
     return {
       'title': recipe.title,
@@ -42,20 +48,36 @@ Recipe.prototype.processIngredients = function (ingredientsInput) {
 
 Recipe.prototype.processSpaces = function (ingredientsAry) {
   return ingredientsAry.map((ingredient) => {
-    const letters = ingredient.split('')
-    letters.forEach((letter) => {
-      if (letter === " ") {
-        return "%20"
+    const letters = ingredient.split('');
+    const processed = letters.map((letter) => {
+      if (letter == " ") {
+        return "%20";
       }else{
         return letter
       };
     });
-    return letters.join('');
+    return processed.join('');
   });
+};
+
+Recipe.prototype.paginate = function (recipeAry) {
+  if (recipeAry.length === 30) {
+    this.page_int += 1
+    console.log(this.currentQuery);
+  }else{
+    return
+  };
+};
+
+Recipe.prototype.newRequest = function () {
+  this.page_int = 1;
+  document.getElementById('recipe_form').reset()
+  document.querySelector('#results').innerHTML = '';
 };
 
 Recipe.prototype.bindEvent = function () {
   PubSub.subscribe('FormView:submit', (evt) =>{
+    this.newRequest();
     this.generateUrl(evt.detail.key_input,evt.detail.ingredients_input);
     this.getData();
   });

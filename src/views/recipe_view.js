@@ -23,7 +23,7 @@ RecipeView.prototype.render = function () {
   const recipeImage = document.createElement('img');
   recipeImage.classList.add('recipe-img');
   recipeImage.src = this.recipe.image;
-  recipeImage.alt = `Image of ${this.recipe.name}`;
+  recipeImage.alt = `Image of ${this.recipe.title}`;
 
   const recipeLink = document.createElement('a');
   recipeLink.classList.add('recipe-img-link');

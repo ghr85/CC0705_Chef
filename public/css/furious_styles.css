@@ -1,16 +1,50 @@
-.header{
+body{
+  background-color: black;
+  color: white;
+  font-family: Verdana;
+}
+header{
   display: flex;
-
+  justify-content: center;
 }
 
+
+
 #logo{
-  display: inline;
   width: 200px;
   height: auto;
-  flex-direction: row;
+  
 }
 
 #header-txt {
-display: inline;
-flex-direction: row;
+  padding: 5px;
+  margin: 5px;
+}
+ 
+#header-img {
+padding: 5px;
+  margin: 5px;
+}
+
+#results{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+
+
+
+}
+.recipe-img{
+  width: 200px;
+  height: auto;
+}
+
+.recipe-header{
+
+}
+
+.recipe-div{
+border-color: rgb(154, 155, 166);
+border-width: 2px;
+margin:10px;
+padding:5px;
 }
