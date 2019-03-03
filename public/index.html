@@ -9,37 +9,38 @@
 <body>
   <header>
     <div id='header-img'>
-    <img id='logo' src='./images/raekwon_the_chef.jpg' alt='raekwon_the_chef'></img>
+      <img id='logo' src='./images/raekwon_the_chef.jpg' alt='raekwon_the_chef'></img>
     </div>
     <div id='header-txt'>
-  <h1 class = 'title'>Chef.</h1>
-  <h2 class = 'page-intent'>Je Suis Dans Le Merde...</h2>
-  <p class = 'description'>An app to provide you with random culinary inspiration based on the ingredients you have in the cupboard</p>
-</div>
+      <h1 class = 'title'>Chef.</h1>
+      <h2 class = 'page-intent'>Je Suis Dans Le Merde...</h2>
+      <p class = 'description'>An app to provide you with random culinary inspiration based on the ingredients you have in the cupboard</p>
+    </div>
 
-</header>
-<section class-'main'>
-  <p class = 'instruction'>Enter your ingredients (separated by a comma - e.g chicken breast,tomatoes) if you wish, otherwise leave blank for a random selection of ideas</p>
-  <div class='recipe_form'>
-    <form name = 'recipe_form' id='recipe_form'>
-      <div class='ingredient_list '>
-        <label for='ingredients_input'>Ingredients:</label>
-        <input type='text' id='ingredients_input' ></input>
-      </div>
-      <div class='key_input'>
-        <label for='key_input'>Api Key:</label>
-        <input type='text' id='key_input' required ></input>
-      </div>
-          <div class='button-block'>
-            <input type='submit' value='Hit me with the recipes!'/>
-            <input type='reset' value='Reset Form'/>
-          </div>
+  </header>
+  <section class-'main'>
+    <p class = 'instruction'>Enter your ingredients (separated by a comma - e.g chicken breast,tomatoes) if you wish, otherwise leave blank for a random selection of ideas</p>
+    <div class='recipe_form'>
+      <form name = 'recipe_form' id='recipe_form'>
+        <div class='ingredient_list '>
+          <label for='ingredients_input'>Ingredients:</label>
+          <input type='text' id='ingredients_input' ></input>
+        </div>
+        <div class='key_input'>
+          <label for='key_input'>Api Key:</label>
+          <input type='text' id='key_input' required ></input>
+        </div>
+        <div class='button-block'>
+          <input type='submit' value='Hit me with the recipes!'/>
+          <input type='reset' value='Reset Form'/>
         </div>
       </div>
-    </form>
-  </div>
-  <button id='clear-all'>Remove Items</button>
+    </div>
+  </form>
+</div>
 </section>
 <section id='results'>
 </section>
+<div id='paginate_option'>
+</div>
 </body>

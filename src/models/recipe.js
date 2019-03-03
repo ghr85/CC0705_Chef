@@ -18,7 +18,7 @@ Recipe.prototype.generateUrl = function (apiKeyInput,ingredientsInput) {
   const ingredients = this.processIngredients(ingredientsInput);
   this.currentQuery = ingredients;
   this.currentApi = apiKeyInput;
-  this.url = `https://www.food2fork.com/api/search?key=${apiKeyInput}&q=${ingredients}&page=${this.page_int}`
+  this.url = `https://www.food2fork.com/api/search?key=${this.currentApi}&q=${this.currentQuery}&page=${this.page_int}`
 };
 
 Recipe.prototype.getData = function () {
@@ -63,8 +63,9 @@ Recipe.prototype.processSpaces = function (ingredientsAry) {
 Recipe.prototype.paginate = function (recipeAry) {
   if (recipeAry.length === 30) {
     this.page_int += 1
-    console.log(this.currentQuery);
+    PubSub.publish("Recipe:paginate",true)
   }else{
+    PubSub.publish("Recipe:paginate",false)
     return
   };
 };
@@ -80,7 +81,19 @@ Recipe.prototype.bindEvent = function () {
     this.newRequest();
     this.generateUrl(evt.detail.key_input,evt.detail.ingredients_input);
     this.getData();
+
   });
+  PubSub.subscribe('ResultView:button-rendered', (evt) =>{
+    if (evt.detail === true){
+      const button = document.querySelector('#paginate')
+      button.addEventListener('click',(evt)=>{
+        PubSub.publish('Recipe:paginate',false);
+        this.generateUrl(this.currentApi,this.currentQuery);
+        this.getData();
+      });
+    }
+  });
+
 };
 
 module.exports = Recipe;
