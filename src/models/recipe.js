@@ -66,7 +66,7 @@ Recipe.prototype.cleanse = function (str) {
 
 Recipe.prototype.paginate = function (recipeAry) {
   if (recipeAry.length === 30) {
-    this.page_int += 1
+    this.page_int+= 1;
     PubSub.publish("Recipe:paginate",true)
   }else{
     PubSub.publish("Recipe:paginate",false)
