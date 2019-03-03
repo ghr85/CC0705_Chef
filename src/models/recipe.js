@@ -34,7 +34,7 @@ Recipe.prototype.mapData = function (data) {
   this.paginate(recipeAry);
   return recipeAry.map((recipe)=>{
     return {
-      'title': recipe.title,
+      'title': this.cleanse(recipe.title),
       'image': recipe.image_url,
       'link': recipe.source_url
     }
@@ -58,6 +58,10 @@ Recipe.prototype.processSpaces = function (ingredientsAry) {
     });
     return processed.join('');
   });
+};
+
+Recipe.prototype.cleanse = function (str) {
+  return str.replace(/&amp;/g,"&")
 };
 
 Recipe.prototype.paginate = function (recipeAry) {
